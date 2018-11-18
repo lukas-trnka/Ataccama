@@ -15,7 +15,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<jersey.version>1.18.3</jersey.version>
+<!-- 		<jersey.version>1.18.3</jersey.version> -->
+		<jersey.version>1.19.4</jersey.version>
 	</properties>
 
 	<dependencies>
@@ -42,6 +43,26 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.6</version>
+        </dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.glassfish.jersey.media</groupId> -->
+<!-- 		    <artifactId>jersey-media-json-jackson</artifactId> -->
+<!-- 		    <version>2.27</version> -->
+<!-- 		</dependency> -->
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.cxf</groupId> -->
+<!-- 			<artifactId>cxf-bundle-jaxrs</artifactId> -->
+<!-- 			<version>2.7.7</version> -->
+<!-- 		</dependency> -->
+		
 	</dependencies>
 
 	<build>

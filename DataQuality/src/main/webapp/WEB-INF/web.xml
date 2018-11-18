@@ -22,4 +22,4 @@
 		<servlet-name>jersey-serlvet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
-</web-app>
+</web-app> 
