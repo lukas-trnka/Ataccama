@@ -10,7 +10,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import cz.lukastrnka.rest.service.NonUniqueNameException;
 import cz.lukastrnka.rest.service.RuleService;
@@ -33,8 +32,7 @@ public class Resource {
 	@Path("rules")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllRules() {
-		// test
-		// return Response.status(Response.Status.OK).entity(getAllRules()).build();
+	// return Response.status(Response.Status.OK).entity(getAllRules()).build();
 		return Response.ok(ruleService.getRulesFromMap()).build();
 	}
 
@@ -58,9 +56,6 @@ public class Resource {
 		try {
 			return Response.status(Response.Status.CREATED).entity(ruleService.addRule(rule)).build();
 		} catch (UnknownArgumentException uae) {
-			// System.out.println("catch unknownArg exc!!");
-			// return Response.status(Response.Status.BAD_REQUEST).entity("{\"unknown
-			// argument\":"+e.getErrNode() + "}").build();
 			return Response.status(Response.Status.BAD_REQUEST)
 					.entity("{\"code\": \"400\",\"unknown argument\" : [" + uae.getErrNode() + "]}").build();
 		} catch (NonUniqueNameException nune) {
@@ -105,7 +100,7 @@ public class Resource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response evalRuleById(@PathParam("id") long id, String data) {
 
-		return Response.status(Response.Status.OK).entity("evalRuleById " + id).build();
+		return Response.status(Response.Status.OK).entity("TODO evalRuleById " + id).build();
 	}
 
 	// Full Evaluation
@@ -115,7 +110,7 @@ public class Resource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response evalAllRules(String data) {
 		System.out.println("evalAllRules - data: " + data);
-		return Response.status(Response.Status.OK).entity("evalAllRules ").build();
+		return Response.status(Response.Status.OK).entity("TODO evalAllRules ").build();
 	}
 
 }

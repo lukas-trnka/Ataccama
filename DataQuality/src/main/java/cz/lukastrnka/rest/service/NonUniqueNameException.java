@@ -1,6 +1,7 @@
 package cz.lukastrnka.rest.service;
 
 public class NonUniqueNameException extends Exception  {
+
 	String name;
 
 	public NonUniqueNameException(String name) {

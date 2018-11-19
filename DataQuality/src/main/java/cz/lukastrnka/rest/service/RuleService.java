@@ -18,6 +18,9 @@ public class RuleService {
 
 	private static long idCounter = 1;
 
+	/***
+	 * Rules are stored only in memory.
+	 */
 	static HashMap<Long, Rule> mapOfRules = getMapOfRules();;
 
 	public RuleService() {
@@ -39,10 +42,14 @@ public class RuleService {
 		return idCounter++;
 	}
 
+	/***
+	 * Returns list of all Rules.
+	 * @return
+	 */
 	public List<Rule> getRulesFromMap() {
 		List<Rule> rr = new ArrayList<Rule>();
 		mapOfRules.forEach((k, v) -> {
-			System.out.println("Item : " + k + " Count : " + v);
+			//System.out.println("Item : " + k + " Count : " + v);
 			rr.add(mapOfRules.get(k));
 		});
 
@@ -158,7 +165,7 @@ public class RuleService {
 	}
 
 	/***
-	 * Compares operators and arguments of two Rules.
+	 * Compares operators and string representations of arguments of two Rules.
 	 * 
 	 * @param ruleOne
 	 * @param ruleTwo
@@ -196,9 +203,11 @@ public class RuleService {
 			idToUpdate = ruleToUpdate.getId();
 			if (!(idToUpdate == id)) {
 				throw new IllegalArgumentException("Mishmash in ID of Json message: " + idToUpdate + " and URL: " + id);
+			} else if (!(mapOfRules.containsKey(id))) {
+				return null;
 			}
 			ableToUpdate = compareRules(getRule(id), ruleToUpdate); 
-			System.out.println("compare: " + compareRules(getRule(id), ruleToUpdate));
+			//System.out.println("compare: " + compareRules(getRule(id), ruleToUpdate));
 
 			if (ableToUpdate) {
 				ruleToUpdate.setId(id);
