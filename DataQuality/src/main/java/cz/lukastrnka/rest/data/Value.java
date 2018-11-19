@@ -1,7 +1,7 @@
 package cz.lukastrnka.rest.data;
 
 public class Value extends Argument {
-	
+
 	private int value;
 
 	public Value(int value) {
@@ -16,7 +16,11 @@ public class Value extends Argument {
 	public void setValue(int value) {
 		this.value = value;
 	}
-	
-	
+
+	@Override
+	public String giveArgument() {
+
+		return String.valueOf(getValue());
+	}
 
 }

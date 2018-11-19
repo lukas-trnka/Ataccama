@@ -34,7 +34,8 @@ public class Resource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllRules() {
 		// test
-		return Response.status(Response.Status.OK).entity("getAllRules").build();
+		// return Response.status(Response.Status.OK).entity(getAllRules()).build();
+		return Response.ok(ruleService.getRulesFromMap()).build();
 	}
 
 	@GET
@@ -75,9 +76,14 @@ public class Resource {
 	@Path("rules/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateRuleById(@PathParam("id") long id, String rule) {
-
-		return Response.status(Response.Status.OK).entity("updateRuleById " + id + "/n" + rule).build();
+	public Response updateRuleById(@PathParam("id") long id, String rule) throws UnknownArgumentException {
+		try {
+			return Response.status(Response.Status.OK).entity(ruleService.updateRule(id, rule)).build();
+		} catch (IllegalArgumentException iae) {
+			// return Response.status(Response.Status.BAD_REQUEST).entity("{\"code\":
+			// \"400\",\"Illegal Argument\" : \"" + iae.getMessage() + "\"}").build();
+			return Response.status(Response.Status.BAD_REQUEST).entity(iae.getMessage()).build();
+		} 
 	}
 
 	@DELETE

@@ -17,5 +17,11 @@ public class Column extends Argument {
 		this.column = column;
 	}
 
+	@Override
+	public String giveArgument() {
+		
+		return getColumn();
+	}
+
 	
 }
